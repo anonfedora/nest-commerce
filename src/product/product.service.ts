@@ -31,7 +31,6 @@ export class ProductService {
                 product => product.category === category
             );
         }
-
         return products;
     }
 
@@ -40,17 +39,20 @@ export class ProductService {
         return products;
     }
 
-    async getAllProduct(id: string): Promise<Product> {
+    async getProduct(id: string): Promise<Product> {
         const product = await this.productModel.findById(id).exec();
         return product;
     }
 
     async addProduct(createProductDTO: CreateProductDTO): Promise<Product> {
-        const newProduct = await this.productModel.create(createProductDTO);
+        const newProduct = await this.productModel.addProduct(createProductDTO);
         return newProduct.save();
     }
 
-    async updateProduct(createProductDTO: CreateProductDTO): Promise<Product> {
+    async updateProduct(
+        id: string,
+        createProductDTO: CreateProductDTO
+    ): Promise<Product> {
         const updatedProduct = await this.productModel.findByIdAndUpdate(
             id,
             createProductDTO,

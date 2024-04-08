@@ -4,7 +4,7 @@ import { PassportStrategy } from "@nestjs/passport";
 import "dotenv/config";
 
 @Injectable()
-export class JWTStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy) {
     constructor() {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

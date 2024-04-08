@@ -10,7 +10,7 @@ import {
 } from "@nestjs/common";
 import { Roles } from "src/auth/decorators/roles.decorator";
 import { Role } from "src/auth/enums/role.enum";
-import { JwtAuthGuard } from "src/auth/guards/jwt-auth.guard";
+import { JwtAuthGuard } from "src/auth/guards/jwt.guard";
 import { RolesGuard } from "src/auth/guards/roles.guard";
 import { CartService } from "./cart.service";
 import { ItemDTO } from "./dtos/item.dto";
@@ -22,7 +22,7 @@ export class CartController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(Role.User)
     @Post("/")
-    async addItemToCart(@Request req, @Body itemDTO: ItemDTO) {
+    async addItemToCart(@Request() req, @Body() itemDTO: ItemDTO) {
         const userId = req.user.userId;
         const cart = await this.cartService.addItemToCart(userId, itemDTO);
         return cart;
@@ -31,7 +31,7 @@ export class CartController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(Role.User)
     @Delete("/")
-    async removeItemFromCart(@Request req, @Body { productId }) {
+    async removeItemFromCart(@Request() req, @Body() { productId }) {
         const userId = req.user.userId;
         const cart = await this.cartService.removeItemFromCart(
             userId,

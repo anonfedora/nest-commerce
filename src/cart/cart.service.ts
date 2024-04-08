@@ -29,7 +29,7 @@ export class CartService {
         return cart;
     }
 
-    async deleteCart(userId: string): Promise<CartDocument> {
+    async deleteCart(userId: string): Promise<Cart> {
         const deletedCart = await this.cartModel.findOneAndRemove({ userId });
         return deletedCart;
     }
@@ -55,7 +55,7 @@ export class CartService {
             if (itemIndex > -1) {
                 let item = cart.items[itemIndex];
                 item.quantity = Number(item.quantity) + Number(quantity);
-                items.subTotalPrice = item.quantity * item.price;
+                item.subTotalPrice = item.quantity * item.price;
 
                 cart.items[itemIndex] = item;
                 this.recalculateCart(cart);

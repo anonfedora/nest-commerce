@@ -4,7 +4,7 @@ import { Role } from "../enums/role.enum";
 import { ROLES_KEY } from "../decorators/roles.decorator";
 
 @Injectable()
-export class RolesGuard extends CanActivate {
+export class RolesGuard implements CanActivate {
     constructor(private reflector: Reflector) {}
 
     canActivate(context: ExecutionContext): boolean {

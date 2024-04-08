@@ -6,11 +6,11 @@ import {
     Body,
     UseGuards
 } from "@nestjs/common";
-import { CreateUserDTO } from "src/user/dtos/create-user.dto";
+import { CreateUserDTO } from "src/user/dtos/create-user-dto.dto";
 import { UserService } from "src/user/user.service";
 import { AuthService } from "./auth.service";
-import { LocalAuthGuard } from "./guards/local-auth.guard";
-import { JwtAuthGuard } from "./guards/jwt-auth.guard";
+import { LocalAuthGuard } from "./guards/local.guard";
+import { JwtAuthGuard } from "./guards/jwt.guard";
 import { RolesGuard } from "./guards/roles.guard";
 import { Roles } from "./decorators/roles.decorator";
 import { Role } from "./enums/role.enum";
@@ -23,7 +23,7 @@ export class AuthController {
     ) {}
 
     @Post("/register")
-    async register(@Body createUserDTO: CreateUserDTO) {
+    async register(@Body() createUserDTO: CreateUserDTO) {
         const user = await this.userService.addUser(createUserDTO);
         return user;
     }
