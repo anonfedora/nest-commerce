@@ -6,7 +6,7 @@ import {
     Body,
     UseGuards
 } from "@nestjs/common";
-import { CreateUserDTO } from "src/user/dtos/create-user-dto.dto";
+import { CreateUserDTO } from "src/user/dtos/create-user.dto";
 import { UserService } from "src/user/user.service";
 import { AuthService } from "./auth.service";
 import { LocalAuthGuard } from "./guards/local.guard";

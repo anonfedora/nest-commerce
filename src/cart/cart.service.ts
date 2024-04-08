@@ -30,7 +30,7 @@ export class CartService {
     }
 
     async deleteCart(userId: string): Promise<Cart> {
-        const deletedCart = await this.cartModel.findOneAndRemove({ userId });
+        const deletedCart = await this.cartModel.findOneAndDelete({ userId });
         return deletedCart;
     }
 
