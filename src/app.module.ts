@@ -6,11 +6,12 @@ import { ProductModule } from './product/product.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { CartModule } from './cart/cart.module';
+import { AuthService } from './auth/auth.service';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb'), 
+  imports: [MongooseModule.forRoot('mongodb+srv://user1:iVGWtTYLP8nbQoxf@cemp-database.z9tgvfn.mongodb.net/?retryWrites=true&w=majority&appName=cemp-database'), 
     ProductModule, UserModule, AuthModule, CartModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthService],
 })
 export class AppModule {}
