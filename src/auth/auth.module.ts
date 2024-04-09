@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 import { AuthService } from "./auth.service";
+import { UserService } from "../user/user.service";
 import { AuthController } from "./auth.controller";
 import { LocalStrategy } from "./strategies/local.strategy";
 import { JwtStrategy } from "./strategies/jwt.strategy";
@@ -15,7 +16,7 @@ import "dotenv/config";
             signOptions: { expiresIn: "3600s" }
         })
     ],
-    providers: [AuthService, LocalStrategy, JwtStrategy],
+    providers: [AuthService, LocalStrategy, JwtStrategy, UserService],
     controllers: [AuthController]
 })
 export class AuthModule {}
