@@ -5,7 +5,7 @@ export type ItemDocument = Item & Document;
 
 @Schema()
 export class Item {
-    @Prop({ type: SchemaTypes.ObjectId, ref: "Product" })
+    @Prop({ type: Schema.Types.ObjectId, ref: "Product" })
     productId: string;
 
     @Prop()
