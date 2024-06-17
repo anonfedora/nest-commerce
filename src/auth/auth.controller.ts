@@ -6,6 +6,7 @@ import {
     Body,
     UseGuards
 } from "@nestjs/common";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { CreateUserDTO } from "src/user/dtos/create-user.dto";
 import { UserService } from "src/user/user.service";
 import { AuthService } from "./auth.service";
@@ -15,6 +16,8 @@ import { RolesGuard } from "./guards/roles.guard";
 import { Roles } from "./decorators/roles.decorator";
 import { Role } from "./enums/role.enum";
 
+@ApiTags("auth")
+@ApiBearerAuth()
 @Controller("auth")
 export class AuthController {
     constructor(

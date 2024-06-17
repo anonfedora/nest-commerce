@@ -9,10 +9,12 @@ import {
     Query,
     NotFoundException
 } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { ProductService } from "./product.service";
 import { CreateProductDTO } from "./dtos/create-product.dto";
 import { FilterProductDTO } from "./dtos/filter-product.dto";
 
+@ApiTags("product")
 @Controller("store/products")
 export class ProductController {
     constructor(private readonly productService: ProductService) {}

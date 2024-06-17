@@ -8,7 +8,7 @@ import {
     NotFoundException,
     Param
 } from "@nestjs/common";
-
+import { ApiTags } from "@nestjs/swagger";
 import { CartService } from "./cart.service";
 import { CreateCartDto } from "./dto/create-cart.dto";
 import { UpdateCartDto } from "./dto/update-cart.dto";
@@ -19,6 +19,7 @@ import { RolesGuard } from "src/auth/guards/roles.guard";
 import { CartService } from "./cart.service";
 import { ItemDTO } from "./dtos/item.dto";
 
+@ApiTags("cart")
 @Controller("cart")
 export class CartController {
     constructor(private readonly cartService: CartService) {}
@@ -45,13 +46,13 @@ export class CartController {
         if (!cart) throw new.NotFoundException("Product Not found");
         return cart;
     }
-@UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles(Role.User)
-  @Delete('/:id')
-  async deleteCart(@Param('id') userId: string) {
-    const cart = await this.cartService.deleteCart(userId);
-    if (!cart) throw new NotFoundException('Cart does not exist');
-    return cart;
-  }
 
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(Role.User)
+    @Delete("/:id")
+    async deleteCart(@Param("id") userId: string) {
+        const cart = await this.cartService.deleteCart(userId);
+        if (!cart) throw new NotFoundException("Cart does not exist");
+        return cart;
+    }
 }
