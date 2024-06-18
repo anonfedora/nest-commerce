@@ -14,6 +14,9 @@ export class Item {
     @Prop()
     quantity: number;
 
+  @Prop()
+  price: number;
+
     @Prop()
     subTotalPrice: number;
 }
