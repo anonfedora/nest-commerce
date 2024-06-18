@@ -43,7 +43,7 @@ export class CartController {
             userId,
             productId
         );
-        if (!cart) throw new.NotFoundException("Product Not found");
+        if (!cart) throw new NotFoundException("Product Not found");
         return cart;
     }
 
