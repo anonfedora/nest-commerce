@@ -18,7 +18,7 @@ import "dotenv/config";
             signOptions: { expiresIn: "3600s" }
         })
     ],
-    providers: [AuthService, LocalStrategy, JwtStrategy, UserService],
+    providers: [AuthService, LocalStrategy, JwtStrategy],
     controllers: [AuthController]
 })
 export class AuthModule {}
