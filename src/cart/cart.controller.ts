@@ -10,8 +10,8 @@ import {
 } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { CartService } from "./cart.service";
-import { CreateCartDto } from "./dto/create-cart.dto";
-import { UpdateCartDto } from "./dto/update-cart.dto";
+import { CreateCartDto } from "./dtos/create-cart.dto";
+import { UpdateCartDto } from "./dtos/update-cart.dto";
 import { Roles } from "src/auth/decorators/roles.decorator";
 import { Role } from "src/auth/enums/role.enum";
 import { JwtAuthGuard } from "src/auth/guards/jwt-auth.guard";
