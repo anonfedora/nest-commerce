@@ -36,7 +36,7 @@ export class CartController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(Role.Admin)
     @Delete("/")
-    removeItemFromCart(@Request() req, @Body() { productId }) {
+    async removeItemFromCart(@Request() req, @Body() { productId }) {
         const userId = req.user.userId;
         const cart = await this.cartService.removeItemFromCart(
             userId,
