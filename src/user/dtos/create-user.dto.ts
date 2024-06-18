@@ -12,10 +12,10 @@ export class CreateUserDTO {
     @IsString()
     email: string;
     
-    @ApiProperty()
+    @ApiProperty({type: String, example: "password"})
     @IsNotEmpty()
     password: string;
     
-    @ApiProperty()
+    @ApiProperty({example: "admin"})
     roles: string[];
 }
